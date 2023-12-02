@@ -1,0 +1,22 @@
+name: unique_and_permanent_device_identifier
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  device_info_plus: ^9.1.1
+  flutter:
+    sdk: flutter
+  flutter_secure_storage: ^9.0.0
+  uuid: ^4.2.1
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
