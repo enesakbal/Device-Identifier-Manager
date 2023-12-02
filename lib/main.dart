@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -70,7 +71,7 @@ class _MainAppState extends State<MainApp> {
                       Text('Device ID: $deviceId'),
                       Text('Device Model: $deviceModel'),
                       Text('Device Name: $deviceName'),
-                      Text('Device API level: $deviceAPILevel'),
+                      if (Platform.isAndroid) Text('Device API level: $deviceAPILevel'),
                       Text('Device OS Version: $deviceOSVersion'),
                     ],
                   ),
