@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -8,13 +7,8 @@ import 'device_identifier_manager/device_identifier_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  log(DeviceIdentifierManager.isInitialized.toString());
   DeviceIdentifierManager.initialize('sample_base_key');
 
-  final id = await DeviceIdentifierManager.instance.getDeviceId();
-  log(id);
-
-  log(DeviceIdentifierManager.isInitialized.toString());
   runApp(const MainApp());
 }
 
