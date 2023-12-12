@@ -1,4 +1,4 @@
-# Device-Identifier-Manager
+# Device Identifier Manager
 
 A Flutter plugin to get a unique identifier for the device. Supports iOS and Android. 
 ### iOS
