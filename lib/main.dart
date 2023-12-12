@@ -55,25 +55,26 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       home: Scaffold(
         body: ValueListenableBuilder(
-            valueListenable: _isInitialized,
-            builder: (context, value, child) {
-              if (value) {
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Device ID: $deviceId'),
-                      Text('Device Model: $deviceModel'),
-                      Text('Device Name: $deviceName'),
-                      if (Platform.isAndroid) Text('Device API level: $deviceAPILevel'),
-                      Text('Device OS Version: $deviceOSVersion'),
-                    ],
-                  ),
-                );
-              } else {
-                return const Center(child: CircularProgressIndicator());
-              }
-            }),
+          valueListenable: _isInitialized,
+          builder: (context, value, child) {
+            if (value) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Device ID: $deviceId'),
+                    Text('Device Model: $deviceModel'),
+                    Text('Device Name: $deviceName'),
+                    if (Platform.isAndroid) Text('Device API level: $deviceAPILevel'),
+                    Text('Device OS Version: $deviceOSVersion'),
+                  ],
+                ),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
       ),
     );
   }
