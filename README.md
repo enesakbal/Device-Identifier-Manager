@@ -7,13 +7,33 @@ We can save data permanently on iOS devices using the flutter_secure_storage pac
 The DeviceIdentifierManager class on iOS simply does this: it tries to read existing data using a pre-set key. If data exists, it returns that; if not, it uses the uuid package to create a new UUID. It then saves this UUID in the keychain. This way, we can retrieve the UUID value later.
 
 **Note: It's crucial that the key value is unique to our app. If our key value mixes with keys from other apps, we might face unwanted issues.**
+```dart
+final currentId = await _secureStorage.read(key: _baseKey) ?? '';
+if (currentId.isEmpty) {
+  final generatedId = uuid.v4();
+  await _secureStorage.write(key: _baseKey, value: generatedId);
 
+  return generatedId;
+  }
+
+return currentId;
+```
 ---
 
 ### ANDROID
 The DeviceIdentifierManager class uses the device_info_plus package on Android devices. By using the device_info_plus package, we can obtain the device ID of the device. The device ID remains unchanged even if the application is deleted and reinstalled.
 
 **However, the device ID may not always be in UUID format**. This is where the uuid package comes into play. It is used to convert the device ID to UUID format. By using the same device ID, we consistently obtain the same UUID.
+```dart
+final info = await _deviceInfoPlugin.androidInfo;
+final deviceId = info.id;
+
+final id = uuid.v5(Uuid.NAMESPACE_URL, deviceId);
+
+return id;
+```
+
+---
 
 ## Usage
 
