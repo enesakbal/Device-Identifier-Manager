@@ -4,9 +4,9 @@ A Flutter plugin to get a unique identifier for the device. Supports iOS and And
 ### iOS
 We can save data permanently on iOS devices using the flutter_secure_storage package. The stored data remains even if it's deleted from the app on the phone. In the flutter_secure_storage package, data is stored in maps like {"key": value}.
 
-**Note: It's crucial that the key value is unique to our app. If our key value mixes with keys from other apps, we might face unwanted issues.**
-
 The DeviceIdentifierManager class on iOS simply does this: it tries to read existing data using a pre-set key. If data exists, it returns that; if not, it uses the uuid package to create a new UUID. It then saves this UUID in the keychain. This way, we can retrieve the UUID value later.
+
+**Note: It's crucial that the key value is unique to our app. If our key value mixes with keys from other apps, we might face unwanted issues.**
 
 ---
 
