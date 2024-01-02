@@ -113,6 +113,8 @@ class DeviceIdentifierManager {
   ///
   /// Returns the device model as a [String].
   Future<String> getDeviceModel() async {
+    if (!isInitialized) throw Exception('DeviceIdentifierManager is not initialized');
+
     late final String deviceModel;
 
     if (Platform.isAndroid) {
@@ -121,7 +123,7 @@ class DeviceIdentifierManager {
     } else if (Platform.isIOS) {
       final info = await _deviceInfoPlugin.iosInfo;
 
-      deviceModel = devices[info.utsname.machine] ?? 'unknown';
+      deviceModel = _devices[info.utsname.machine] ?? 'unknown';
     } else {
       throw Exception('Unsupported platform');
     }
@@ -137,6 +139,8 @@ class DeviceIdentifierManager {
   ///
   /// Returns the device name as a [String].
   Future<String> getDeviceName() async {
+    if (!isInitialized) throw Exception('DeviceIdentifierManager is not initialized');
+
     late final String deviceName;
 
     if (Platform.isAndroid) {
@@ -157,6 +161,8 @@ class DeviceIdentifierManager {
   /// Returns a [Future] that completes with a [String] representing the device's operating system version.
   /// Throws an [Exception] if the platform is not supported.
   Future<String> getDeviceOSVersion() async {
+    if (!isInitialized) throw Exception('DeviceIdentifierManager is not initialized');
+
     late final String deviceOSVersion;
 
     if (Platform.isAndroid) {
@@ -181,6 +187,8 @@ class DeviceIdentifierManager {
   /// - The SDK version as a string if the platform is Android.
   /// - An empty string if the platform is not Android.
   Future<String> getAPILevel() async {
+    if (!isInitialized) throw Exception('DeviceIdentifierManager is not initialized');
+
     if (Platform.isAndroid) {
       final info = await _deviceInfoPlugin.androidInfo;
       return info.version.sdkInt.toString();
