@@ -94,9 +94,14 @@ class DeviceIdentifierManager {
       return currentId;
     } else if (Platform.isAndroid) {
       final info = await _deviceInfoPlugin.androidInfo;
-      final deviceId = info.id;
 
-      final id = uuid.v5(Uuid.NAMESPACE_URL, deviceId);
+      final deviceId = info.id;
+      final deviceFingerprint = info.fingerprint;
+      final deviceModel = info.model;
+      final deviceHost = info.host;
+      final isPhysicalDevice = info.isPhysicalDevice;
+
+      final id = uuid.v5(Uuid.NAMESPACE_URL, '$deviceId$deviceFingerprint$deviceModel$deviceHost$isPhysicalDevice');
 
       return id;
     }
