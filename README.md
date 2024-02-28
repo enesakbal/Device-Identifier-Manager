@@ -22,7 +22,7 @@ return currentId;
 ---
 
 ### Android
-The DeviceIdentifierManager class uses the device_info_plus package on Android devices. By using the device_info_plus package, we can obtain the device ID of the device. DeviceIdentifierManager class generates a unique identifier using the v5 method of the Uuid object, which generates a UUID using the SHA-1 hash of a namespace identifier and a name. The name is a string created by concatenating the device's ID, fingerprint, model, host, and whether it's a physical device.
+The DeviceIdentifierManager class uses the device_info_plus package on Android devices. By using the device_info_plus package, we can obtain the device ID of the device. DeviceIdentifierManager class generates a unique identifier using the v5 method of the Uuid object, which generates a UUID using the SHA-1 hash of a namespace identifier and a name. The name is a string created by concatenating the baseKey, device's ID, fingerprint, model, host, and whether it's a physical device.
 
 **However, the device ID may not always be in UUID format**. This is where the uuid package comes into play. It is used to convert the device ID to UUID format. By using the same device ID, we consistently obtain the same UUID.
 ```dart
@@ -34,7 +34,10 @@ final deviceModel = info.model;
 final deviceHost = info.host;
 final isPhysicalDevice = info.isPhysicalDevice;
 
-final id = uuid.v5(Uuid.NAMESPACE_URL, '$deviceId$deviceFingerprint$deviceModel$deviceHost$isPhysicalDevice');
+final id = uuid.v5(
+  Uuid.NAMESPACE_URL,
+  '$deviceId$deviceFingerprint$deviceModel$deviceHost$isPhysicalDevice$_baseKey',
+);
 
 return id;
 ```
