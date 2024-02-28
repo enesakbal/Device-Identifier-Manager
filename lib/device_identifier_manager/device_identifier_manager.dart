@@ -4,7 +4,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:uuid/uuid.dart';
 
-part 'iphone_device_models.dart';
+part 'ios_device_models.dart';
 
 /// A class that manages the device identifier, model, name, OS version, and API level.
 ///
@@ -101,7 +101,10 @@ class DeviceIdentifierManager {
       final deviceHost = info.host;
       final isPhysicalDevice = info.isPhysicalDevice;
 
-      final id = uuid.v5(Uuid.NAMESPACE_URL, '$deviceId$deviceFingerprint$deviceModel$deviceHost$isPhysicalDevice');
+      final id = uuid.v5(
+        Uuid.NAMESPACE_URL,
+        '$deviceId$deviceFingerprint$deviceModel$deviceHost$isPhysicalDevice$_baseKey',
+      );
 
       return id;
     }
@@ -128,7 +131,7 @@ class DeviceIdentifierManager {
     } else if (Platform.isIOS) {
       final info = await _deviceInfoPlugin.iosInfo;
 
-      deviceModel = _devices[info.utsname.machine] ?? 'unknown';
+      deviceModel = _devices[info.utsname.machine] ?? info.utsname.machine;
     } else {
       throw Exception('Unsupported platform');
     }
