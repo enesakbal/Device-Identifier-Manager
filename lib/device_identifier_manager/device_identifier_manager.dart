@@ -157,7 +157,7 @@ class DeviceIdentifierManager {
     } else if (Platform.isIOS) {
       final info = await _deviceInfoPlugin.iosInfo;
 
-      deviceName = info.utsname.nodename;
+      deviceName = info.name;
     } else {
       throw Exception('Unsupported platform');
     }
