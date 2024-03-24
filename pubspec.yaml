@@ -7,7 +7,7 @@ environment:
   sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
-  device_info_plus: ^9.1.1
+  device_info_plus: ^10.0.1
   flutter:
     sdk: flutter
   flutter_secure_storage: ^9.0.0
