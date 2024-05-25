@@ -54,14 +54,16 @@ class DeviceIdentifierManager {
     _baseKey = baseKey;
     _instance ??= DeviceIdentifierManager._(
       DeviceInfoPlugin(),
-      const FlutterSecureStorage(),
+      FlutterSecureStorage(iOptions: IOSOptions(accountName: _baseKey)),
     );
 
     isInitialized = true;
   }
 
-  static DeviceIdentifierManager get instance =>
-      _instance ??= DeviceIdentifierManager._(DeviceInfoPlugin(), const FlutterSecureStorage());
+  static DeviceIdentifierManager get instance => _instance ??= DeviceIdentifierManager._(
+        DeviceInfoPlugin(),
+        FlutterSecureStorage(iOptions: IOSOptions(accountName: _baseKey)),
+      );
 
   /// Retrieves the unique device identifier.
   ///
