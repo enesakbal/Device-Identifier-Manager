@@ -1,6 +1,18 @@
 # Device Identifier Manager
 
 A Flutter plugin to get a unique identifier for the device. Supports iOS and Android. 
+
+## Installation
+To use package in your own project add the following lines into pubspec.yaml file.
+
+```yaml
+unique_and_permanent_device_identifier:
+  git:
+    url: https://github.com/enesakbal/Device-Identifier-Manager.git
+    ref: main
+```
+
+
 ### iOS
 We can save data permanently on iOS devices using the flutter_secure_storage package. The stored data remains even if it's deleted from the app on the phone. In the flutter_secure_storage package, data is stored in maps like {"key": value}.
 
@@ -131,6 +143,19 @@ class _MainAppState extends State<MainApp> {
   }
 }
 ```
+
+## Support
+If encounter any problems in package or add want new features feel free to contact me, open issue or pull request.
+
+## Contact Me
+[![LinkedIn](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/enesakbl/)
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@enesakbal00)
+
+enesakbal00@gmail.com
+
+
+created by ea.
+
 
 
 
